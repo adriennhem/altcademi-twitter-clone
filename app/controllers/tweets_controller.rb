@@ -1,4 +1,8 @@
 class TweetsController < ApplicationController
+    def index 
+        @tweets = Tweet.all.order(id: :desc)
+    end 
+
     def create
         token = cookies.signed[:twitter_session_token]
         session = Session.find_by(token: token)
