@@ -3,6 +3,10 @@ class TweetsController < ApplicationController
         @tweets = Tweet.all.order(id: :desc)
     end 
 
+    def index_by_user
+        @tweets = User.find_by(username: params[:username]).tweets
+    end
+
     def create
         token = cookies.signed[:twitter_session_token]
         session = Session.find_by(token: token)
