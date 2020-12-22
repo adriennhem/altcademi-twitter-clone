@@ -1,5 +1,6 @@
 class User < ApplicationRecord
     has_many :sessions
+    has_many :tweets
 
     validates :email, length: { minimum: 5, maximum: 500 }, presence: true, uniqueness: true
     validates :username, length: { minimum: 3, maximum: 64 }, presence: true, uniqueness: true
